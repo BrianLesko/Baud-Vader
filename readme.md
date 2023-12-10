@@ -4,10 +4,6 @@ This code implements serial communication with an arduino. It is based on pyseri
 
 &nbsp;
 
-<div align="center"><img src="docs/preview.gif" width="800"></div>
-
-&nbsp;
-
 ## Dependencies
 
 This code uses the following libraries:
