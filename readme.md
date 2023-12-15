@@ -1,7 +1,7 @@
-# Arduino + Python
-This code implements wired serial communication between two devices - a laptop and an arduino - using a usb C cable. The format is similar to a subcriber publisher dynamic. 
+# Baud Vader
+This code implements wired serial communication between two devices - Just make sure they have the same baud rate. 
 
-The arduino acts as a listener while your computer acts as the publisher.
+To recreate what ive done here you'll need a laptop, an arduino, and a usb C cable.
 
 &nbsp;
 
