@@ -20,11 +20,11 @@ You can choose to run one of the following codes on the arduino:
  - `Arduino C++`: from arduino-serial-listener upload the sketch using the arduino IDE
 
 Once the arduino is running one of the above programs, is plugged into your computer, and the port is correct, you can send messages to your arduino in multiple ways:
- - `run the streamlit app`: in the terminal: streamlit run app.py
- - `run the script in python-serial-sender`: your feedback will be in the terminal 
- - `use the serial monitor from the arduino IDE`
- - `use the serial monitor from Arduino Lab for Micropython`
- - `use the serial monitor provided by the arduino extention in Visual studio code`
+ - `streamlit app`: in the terminal: streamlit run app.py
+ - `python-serial-sender`: your feedback will be in the terminal 
+ - `Arduino IDE`
+ - `Arduino Lab for Micropython`
+ - `VS Code arduino extension`
 
 &nbsp;
 
