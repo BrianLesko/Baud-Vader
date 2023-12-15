@@ -1,47 +1,40 @@
 # Arduino + Python
+This code implements wired serial communication between two devices - a laptop and an arduino - using a usb C cable. The format is similar to a subcriber publisher dynamic. 
 
-This code implements serial communication with an arduino. It is based on pyserial. Ive been calling it a wrapper around the pyserial library and have created it to match another wrapper for the socket library - used for ethernet communication.
+The arduino acts as a listener while your computer acts as the publisher.
 
 &nbsp;
 
-## Dependencies
+## Local Computer Dependencies
 
 This code uses the following libraries:
 - `pyserial`: For handling system resources, ports, etc
+- `streamlit`: For creating the user interface
 
-&nbsp;
+## Run this demo yourself
 
-## Usage
+To run this demo yourself, you must have an arduino. 
 
-In your Python script: 
-```
-import arduino as ard 
-port = 'your_port'
-baude_rate = 9600
-my_arduino = ard.arduino(port,baude_rate,.1)
-response = my_arduino.send_and_receive('Message')
-```
+You can choose to run one of the following codes on the arduino:
+ - `MicroPython`: from micropython-serial-listener upload main.py to the board
+ - `Arduino C++`: from arduino-serial-listener upload the sketch using the arduino IDE
+
+Once the arduino is running one of the above programs, is plugged into your computer, and the port is correct, you can send messages to your arduino in multiple ways:
+ - `run the streamlit app`: in the terminal: streamlit run app.py
+ - `run the script in python-serial-sender`: your feedback will be in the terminal 
+ - `use the serial monitor from the arduino IDE`
+ - `use the serial monitor from Arduino Lab for Micropython`
+ - `use the serial monitor provided by the arduino extention in Visual studio code`
 
 &nbsp;
 
 ## How it Works
 
 The app as follows:
-1. The class is initialized with the port your arduino is plugged into, the bauderate, and a timeout
-2. send_and_receive encodes and send your message using utf-8 byte encoding 
-3. the response is decoded automatically
-
-&nbsp;
-
-## Repository Structure
-```
-repository/
-├── arduino.py # the class is in this python file
-├── requirements.txt # the python packages needed to run locally
-├── .gitignore # includes the local virtual environment named my_env
-└── docs/
-    └── preview.png # preview photo for Github
-```
+1. The python script app.py is run by Streamlit in a loop, updating when you interact with the HTML page
+2. The arduino waits for a message
+2. Your message is sent to the arduino over USB C serial communication 
+3. The arduino receives your message and responds
 
 &nbsp;
 

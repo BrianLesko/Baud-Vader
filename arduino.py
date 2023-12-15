@@ -1,6 +1,6 @@
 # Brian Lesko
 # 11/22/23 
-# Open serial communication with an arduino from a python script using the library pyserial using this class, or check out the example at the bottom of the file.
+# Open serial communication with an arduino from a python script using the library pyserial using this class.
 
 import serial # !pip install pyserial
 
@@ -11,21 +11,43 @@ class arduino:
         self.baude_rate = baude_rate
         self.timeout = timeout
         self.serial = serial.Serial(port=port, baudrate=baude_rate, timeout=timeout)
+        # raise an error if the port is not open
+        if not self.isconnected():
+            raise Exception("Could not open serial port: " + str(port))
+
+    def isconnected(self): 
+        return self.serial.isOpen()
 
     def disconnect(self):
         self.serial.close()
 
+    def send(self,command):
+        command = command + '\n'
+        self.serial.write(command.encode('utf-8'))
+
+    def read(self):
+        response = self.serial.readline().decode('utf-8')
+        return response
+
     # Send a command and receive a response
     def send_and_receive(self,command):
-        command = command + '\n' # setup for the readUntil function in the arduino code
+        command = command + '\n'
         self.serial.write(command.encode('utf-8'))
-        response = self.serial.readline().decode('utf-8').rstrip()
+        response = self.serial.readline().decode('utf-8')
         return response
+    
+    def isconnected(self):
+        return self.serial.isOpen()
+    
+    def any(self):
+        # returns true if there is data in the buffer
+        return self.serial.inWaiting() > 0
+
     
 def example():
     # port = '/dev/ttyACM0' # on the raspberry pi, this is the port that the arduino is connected to
-    # port = '/dev/tty.usbmodemF412FA9FD4E42' # on mac you must go to the terminal and type 'ls /dev/tty.*' to find the port
-    port = 'COM4' # Windows port 
+    port = '/dev/tty.usbmodemF412FA9FD4E42' # on mac you must go to the terminal and type 'ls /dev/tty.*' to find the port
+    # port = 'COM4' # Windows port 
     my_arduino = arduino(port,9600,.1)
 
     command = "ON"
