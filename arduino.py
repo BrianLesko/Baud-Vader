@@ -3,6 +3,7 @@
 # Open serial communication with an arduino from a python script using the library pyserial using this class.
 
 import serial # !pip install pyserial
+import serial.tools.list_ports
 
 class arduino:
 
@@ -42,6 +43,12 @@ class arduino:
     def any(self):
         # returns true if there is data in the buffer
         return self.serial.inWaiting() > 0
+    
+    @classmethod
+    def list_ports(cls):
+        ports = serial.tools.list_ports.comports()
+        available_ports = [port.device for port in ports]
+        return available_ports
 
     
 def example():
