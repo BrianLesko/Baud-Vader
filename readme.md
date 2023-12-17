@@ -3,6 +3,8 @@ This code implements wired serial communication between two devices - Just make 
 
 To recreate what ive done here you'll need a laptop, an arduino, and a usb C cable.
 
+![Preview](docs/preview.png)
+
 &nbsp;
 
 ## Local Computer Dependencies
