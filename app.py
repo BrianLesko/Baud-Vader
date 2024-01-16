@@ -8,7 +8,6 @@ def main():
     gui.clean_format()
     gui.about(text = "This app sends your text input to an arduino over a usb cord - using serial communication ")
     st.title("Arduino Serial Communication")
-
     with st.chat_message("assistant"):
         # st.write("**Available Serial Ports:**")
         port = st.selectbox("Select a port",ard.arduino.list_ports())
